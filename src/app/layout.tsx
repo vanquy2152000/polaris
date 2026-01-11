@@ -6,10 +6,10 @@ import {
 } from '@clerk/nextjs'
 import { dark } from '@clerk/themes';
 
-import { ThemeProvider } from '../components/theme-provider';
 import Header from '../components/header';
 
 import "./globals.css";
+import { Providers } from '../components/providers';
 
 const inter = Inter({
     variable: "--font-inter",
@@ -40,17 +40,12 @@ export default function RootLayout({
         >
             <html lang="en" suppressHydrationWarning>
                 <body className={`${inter.variable} ${plexMono.variable} antialiased`} >
-                    <ThemeProvider
-                        attribute="class"
-                        defaultTheme="dark"
-                        enableSystem
-                        disableTransitionOnChange
-                    >
-                        <Header />
+                    <Providers>
+                        {/* <Header /> */}
                         {children}
-                    </ThemeProvider>
+                    </Providers>
                 </body>
             </html>
-        </ClerkProvider>
+        </ClerkProvider >
     );
 }
